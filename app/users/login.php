@@ -4,32 +4,36 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
-// $errors[];
+// Check if both email and password exists in the POST request.
 if (isset($_POST['email'], $_POST['password'])) {
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 
-  $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-  $password = $_POST['password'];
+    // Prepare, bind email parameter and execute the database query.
+    $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
+    $statement->bindParam(':email', $email, PDO::PARAM_STR);
+    $statement->execute();
 
-  $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
-  $statement->bindParam(':email' , $email);
-  $statement->execute();
-  $user = $statement->fetch(PDO::FETCH_ASSOC);
+    // Fetch the user as an associative array.
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-  if (!$user) {
-    redirect('/login.php');
-  }
+    // If we couldn't find the user in the database, redirect back to the login
+    // page with our custom redirect function.
+    if (!$user) {
+        redirect('/login.php');
+    }
 
-  if ($email === '' || $password === '') {
-    $errors[] = 'Please insert into the text field';
-  }
+    // If we found the user in the database, compare the given password from the
+    // request with the one in the database using the password_verify function.
+    if (password_verify($_POST['password'], $user['password'])) {
+        // If the password was valid we know that the user exists and provided
+        // the correct password. We can now save the user in our session.
+        // Remember to not save the password in the session!
+        unset($user['password']);
 
-  if (password_verify($_POST['password'], $user['password'])) {
-    $_SESSION['user'] = $user ;
-    redirect('/');
-  }else {
-    redirect('/login.php');
-  }
-
+        $_SESSION['user'] = $user;
+    }
 }
 
-// In this file we login users.
+// We should put this redirect in the end of this file since we always want to
+// redirect the user back from this file. We don't know
+redirect('/');
