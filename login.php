@@ -6,7 +6,7 @@
     <form action="app/users/login.php" method="post">
         <div class="form-group">
             <label for="email">Email</label>
-            <input class="form-control" type="email" name="email" placeholder="francis@darjeeling.com" required>
+            <input class="form-control" type="email" name="email" placeholder="email" required>
             <small class="form-text text-muted">Please provide the your email address.</small>
         </div><!-- /form-group -->
 
