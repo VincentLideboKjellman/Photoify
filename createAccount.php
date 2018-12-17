@@ -12,7 +12,7 @@
 
         <div class="form-group">
             <label for="username">Username</label>
-            <input class="form-control" type="email" name="email" placeholder="Username" required>
+            <input class="form-control" type="text" name="username" placeholder="Username" required>
             <small class="form-text text-muted">Enter your email address.</small>
         </div><!-- /form-group -->
 
