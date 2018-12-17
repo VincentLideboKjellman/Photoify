@@ -28,7 +28,7 @@
             <small class="form-text text-muted">Please provide the your password (passphrase).</small>
         </div><!-- /form-group -->
 
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-primary">Create Account</button>
     </form>
 </article>
 
