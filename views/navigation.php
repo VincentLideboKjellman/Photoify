@@ -12,7 +12,7 @@
 
         <!-- REMOVE WHEN YOU ALREDAY HAVE AN ACCOUNT -->
         <li class="nav-item">
-            <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/createAccount.php' ? 'active' : ''; ?>" href="/createAccount.php">Create Account</a>
+            <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/create.php' ? 'active' : ''; ?>" href="/create.php">Create Account</a>
         </li><!-- /nav-item -->
 
         <li class="nav-item">

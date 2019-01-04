@@ -3,7 +3,7 @@
 <article>
     <h1>Create Account</h1>
 
-    <form action="app/users/createAccount.php" method="post">
+    <form action="app/users/create.php" method="post">
         <div class="form-group">
             <label for="name">Name</label>
             <input class="form-control" type="text" name="name" placeholder="Name" required>
