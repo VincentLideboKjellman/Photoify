@@ -1,7 +1,18 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
 <article>
+
+  <h1>Profile Info</h1>
+  <div class="temp-profie-div">
+    <p>Profile Image:</p>
+    <p>Username: <?php echo $_SESSION['user']['username']; ?></p>
+    <p>Name: <?php echo $_SESSION['user']['name']; ?></p>
+    <p>Email: <?php echo $_SESSION['user']['email']; ?></p>
+  </div>
+
     <h1>Edit Account</h1>
+
+
 
     <form action="app/users/profile.php" method="post">
         <div class="form-group">
