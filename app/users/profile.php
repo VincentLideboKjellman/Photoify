@@ -4,28 +4,30 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
-if (isset($_POST['name'], $_POST['username'], $_POST['email'], $_POST['password'])) {
-
+if (isset($_POST['name'], $_POST['username'], $_POST['email'])){
 
   $name = trim(filter_var($_POST['name'], FILTER_SANITIZE_STRING));
   $username = trim(filter_var($_POST['username'], FILTER_SANITIZE_STRING));
   $email = trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
-  $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+  $id = $_SESSION['user']['id'];
+
+  $updateStatement = $pdo->prepare('UPDATE users SET name = :name, username = :username, email = :email WHERE id = :id');
+  $updateStatement->bindParam(':id', $id, PDO::PARAM_INT);
+  $updateStatement->bindParam(':name', $name, PDO::PARAM_STR);
+  $updateStatement->bindParam(':username', $username, PDO::PARAM_STR);
+  $updateStatement->bindParam(':email', $email, PDO::PARAM_STR);
+  $updateStatement->execute();
 
 
-  $statement = $pdo->prepare('INSERT INTO users (name, username, email, password) VALUES (:name, :username, :email, :password)');
-  // $statement = $pdo->prepare('SELECT name, username, email, password FROM users WHERE email = :email, username = :username, password = :password');
+  $_SESSION['user']['name'] = $name;
+  $_SESSION['user']['username'] = $username;
+  $_SESSION['user']['email'] = $email;
 
-  if (!$statement) {
+  if (!$updateStatement) {
       die(var_dump($pdo->errorInfo()));
   };
-
-  $statement->bindParam(':name',$name,PDO::PARAM_STR);
-  $statement->bindParam(':username',$username,PDO::PARAM_STR);
-  $statement->bindParam(':email',$email,PDO::PARAM_STR);
-  $statement->bindParam(':password',$password,PDO::PARAM_STR);
-
-  $statement->execute();
-
 }
-  redirect('/');
+
+// redirect('logout.php');
+redirect('/profile.php');
