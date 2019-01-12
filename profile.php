@@ -13,12 +13,21 @@
   </div>
 
 
+      <h1>Change profile pucture</h1>
+      <form action="app/users/profilePicture.php" method="post">
+        <div class="form-group">
+            <label for="name">Biography</label>
+          <input class="form-control" type="text" name="" placeholder="" >
+            <small class="form-text text-muted">Change name</small>
+        </div><!-- /form-group -->
+      </form>
+
       <h1>Edit Account info</h1>
       <form action="app/users/profile.php" method="post">
         <div class="form-group">
             <label for="name">Biography</label>
-          <input class="form-control" type="text" name="bio" placeholder="Biography" value=<?php echo $_SESSION['user']['profile_bio'] ?>>
-            <small class="form-text text-muted">Change name</small>
+          <textarea class="form-control" type="text" name="bio" placeholder="Biography" value=""><?php echo $_SESSION['user']['profile_bio'] ?></textarea>
+            <small class="form-text text-muted">Change Biography</small>
         </div><!-- /form-group -->
 
         <div class="form-group">
