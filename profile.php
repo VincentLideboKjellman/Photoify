@@ -5,7 +5,13 @@
 
   <h1>Profile Info</h1>
   <div class="temp-profie-div">
-    <p>Profile Image:</p><img src=<?php $_SESSION['user']['profile_image'] ?> alt="">
+    <p>Profile Image:</p><img src="/app/users/uploads/profile_images/<?php if($_SESSION['user']['profile_image'] === 'defaultvalue.jpg'){
+      echo 'defaultvalue.jpg';
+    }else {
+      echo $_SESSION['user']['profile_image'];
+    } ?>" width="150px" height="150px" alt="A profile picture">
+    <!--// End of profile image -->
+
     <p>Username: <?php echo $_SESSION['user']['username']; ?></p>
     <p>Name: <?php echo $_SESSION['user']['name']; ?></p>
     <p>Email: <?php echo $_SESSION['user']['email']; ?></p>
@@ -14,12 +20,13 @@
 
 
       <h1>Change profile picture</h1>
-      <form action="app/users/profilePicture.php" method="post">
+      <form action="app/users/profileImage.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Change profile picture</label><br>
-            <input class="" type="file" name="profilePicture" placeholder="">
+            <input class="" type="file" name="profileImage">
             <small class="form-text text-muted">Change name</small>
         </div><!-- /form-group -->
+        <button type="submit" class="btn btn-primary">Change Picture</button>
       </form>
 
       <h1>Edit Account info</h1>
