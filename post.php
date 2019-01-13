@@ -4,7 +4,11 @@
 <form class="" action="/app/posts/store.php" method="post" enctype="multipart/form-data">
   Post an image:<input type="file" name="image" value=""><br><br>
 
-  Set a Description:<input type="text" name="photoDescription" value="">
+  Set a Description:<input type="text" name="imageDescription" value=""><br><br>
+
+  <button type="submit" name="button">Post</button>
+
+
 </form>
 
 <?php require __DIR__.'/views/footer.php'; ?>

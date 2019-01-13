@@ -8,7 +8,7 @@
     <p>Profile Image:</p><img src="/app/users/uploads/profile_images/<?php if($_SESSION['user']['profile_image'] === 'defaultvalue.jpg'){
       echo 'defaultvalue.jpg';
     }else {
-      echo $_SESSION['user']['profile_image'];
+      echo $_SESSION['user']['id'].'/'.$_SESSION['user']['profile_image'];
     } ?>" width="150px" height="150px" alt="A profile picture">
     <!--// End of profile image -->
 

@@ -8,18 +8,18 @@ if (isset($_FILES['profileImage'])) {
   $id = $_SESSION['user']['id'];
   $imageName = $id.'_'.$date.$image['name'];
 
-  $deleteOldProfileImageStatement = $pdo->prepare('SELECT * FROM users WHERE profile_image = :profileImage');
+  // $deleteOldProfileImageStatement = $pdo->prepare('SELECT * FROM users WHERE profile_image = :profileImage');
 
   $UpdateProfileImageStatement = $pdo->prepare('UPDATE users SET profile_image = :profileImage WHERE id = :id');
   $UpdateProfileImageStatement->bindParam(':id', $id, PDO::PARAM_INT);
   $UpdateProfileImageStatement->bindParam(':profileImage', $imageName, PDO::PARAM_STR);
   $UpdateProfileImageStatement->execute();
 
-  if (!is_dir(__DIR__."/uploads/profile_images")) {
-        mkdir(__DIR__."/uploads/profile_images");
+  if (!is_dir(__DIR__."/uploads/profile_images/".$id.'/')) {
+        mkdir(__DIR__."/uploads/profile_images/".$id.'/');
       };
 
-      $imagePath = __DIR__.'/uploads/profile_images/';
+      $imagePath = __DIR__.'/uploads/profile_images/'.$id.'/';
 
       if (file_exists($imagePath.$image['name'])) {
         die;
