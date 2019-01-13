@@ -15,8 +15,8 @@ if (isset($_FILES['profileImage'])) {
   $UpdateProfileImageStatement->bindParam(':profileImage', $imageName, PDO::PARAM_STR);
   $UpdateProfileImageStatement->execute();
 
-  if (!is_dir(__DIR__."/uploads/profile_images/".$id.'/')) {
-        mkdir(__DIR__."/uploads/profile_images/".$id.'/');
+  if (!is_dir(__DIR__.'/uploads/profile_images/'.$id.'/')) {
+        mkdir(__DIR__.'/uploads/profile_images/'.$id.'/');
       };
 
       $imagePath = __DIR__.'/uploads/profile_images/'.$id.'/';
