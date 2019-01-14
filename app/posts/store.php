@@ -36,13 +36,12 @@ if (isset($_FILES['image'])) {
 
 	$postStatement->bindParam(':id', $id, PDO::PARAM_INT);
 	$postStatement->bindParam(':description', $description, PDO::PARAM_STR);
-	$postStatement->bindParam(':image', $postPath, PDO::PARAM_STR);
+	$postStatement->bindParam(':image', $postName, PDO::PARAM_STR);
 	$postStatement->execute();
 
 
 }
-
-redirect('/post.php');
+redirect('../posts/loadPosts.php');
 
 // if ($image['size'] >= 4194304) {
 //   $errors[] = $image['name'].'Is too big, please choose an image that\'s smaller than 4mb';
@@ -53,8 +52,3 @@ redirect('/post.php');
 //   print_r($errors);
 //   exit;
 // }
-
-
-
-
-redirect('/post.php');

@@ -30,10 +30,11 @@ if (isset($_POST['email'], $_POST['password'])) {
         // Remember to not save the password in the session!
         unset($user['password']);
 
+        //make an array to filtrate out the password
         $_SESSION['user'] = $user;
     }
 }
 
 // We should put this redirect in the end of this file since we always want to
 // redirect the user back from this file. We don't know
-redirect('/');
+redirect('../posts/loadPosts.php');
