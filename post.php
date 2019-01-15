@@ -20,16 +20,36 @@
       <img src="/app/posts/postUploads/<?php echo $post['user_id'].'/'.$post['image'] ?>" width="200px" height="200px" alt="">
       <p>Description: <?php echo $post['description'] ?></p>
 
-      <div class="likes-container">
-
-          <form class="likes" method="post" >
-            <input type="hidden" name="id" value="<?php $post['post_id']; ?>">
-            <button class="" type="submit">Like</button>
-          </form>
-
-          <p class="number-likes" >Likes:<?php echo $post['likes']; ?></p>
-
-      </div>
+      <!------------------ Like Posts -->
+      <?php
+       $statement = $pdo->prepare(
+          'SELECT * FROM likes WHERE post_id = :post_id AND user_id = :user_id');
+           $statement->bindParam(':post_id', $post['post_id'], PDO::PARAM_INT);
+           $statement->bindParam(':user_id', $_SESSION['user']['user_id'], PDO::PARAM_INT);
+           $statement->execute();
+           $alreadyLiked = $statement->fetch(PDO::FETCH_ASSOC);
+   ?>
+           <!-- change button if the post is liked or not by the user -->
+       <?php if($alreadyLiked):?>
+           <form class="like-post" action="app/likes/delete.php" method="post">
+               <button type="submit" name="like" class="like">
+                   <span style="color:red;">
+                       <i class="fas fa-heart fa-lg"></i>
+                   </span>
+               </button>
+                   <p>Liked by: <?php echo $post['like']; ?></p>
+                   <input type="hidden" value="<?php echo $post['post_id'];?>" name="post_id" id=post_id>
+           </form>
+   <?php else: ?>
+           <form class="like-post" action="app/likes/like.php" method="post">
+               <button type="submit" name="like" class="like">
+                   <i class="far fa-heart fa-lg"></i>
+               </button>
+                   <p>Liked by: <?php echo $post['like']; ?></p>
+                   <input type="hidden" value="<?php echo $post['post_id'];?>" name="post_id" id=post_id>
+           </form>
+   <?php endif; ?>
+      <!------------------ end Like Posts -->
 
       <!--Edit post Decription-->
       <?php if ($_SESSION['user']['id'] === $post['user_id']): ?>
