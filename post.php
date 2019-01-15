@@ -20,6 +20,17 @@
       <img src="/app/posts/postUploads/<?php echo $post['user_id'].'/'.$post['image'] ?>" width="200px" height="200px" alt="">
       <p>Description: <?php echo $post['description'] ?></p>
 
+      <div class="likes-container">
+
+          <form class="likes" method="post" >
+            <input type="hidden" name="id" value="<?php $post['post_id']; ?>">
+            <button class="" type="submit">Like</button>
+          </form>
+
+          <p class="number-likes" >Likes:<?php echo $post['likes']; ?></p>
+
+      </div>
+
       <!--Edit post Decription-->
       <?php if ($_SESSION['user']['id'] === $post['user_id']): ?>
       <div class="edit-description">
@@ -34,12 +45,14 @@
       <!--// END Edit Post Description  -->
       <!--Delete Post  -->
       <?php if ($_SESSION['user']['id'] === $post['user_id']): ?>
-      <div class="edit-description">
-        <form class="edit-description-form" action="app/posts/delete.php" method="post">
+      <div class="delete-post">
+        <form class="delete-post-form" action="app/posts/delete.php" method="post">
           <input type="hidden" name="postId" value="<?php echo $post['post_id'];?>" >
           <button type="submit" name="button">Remove Post</button>
         </form>
       </div>
+      <br>
+      <br>
 
       <?php endif; ?>
 
@@ -47,16 +60,7 @@
 
 
 
-      <div class="likes-container">
 
-					<form class="likes" method="post" >
-						<input type="hidden" name="id" value="<?php $post['post_id']; ?>">
-						<button class="" type="submit">Like</button>
-					</form>
-
-          <p class="number-likes" >Likes:<?php echo $post['likes']; ?></p>
-
-			</div>
 
       <!-- <form class="" action="/app/posts/likes.php" method="post">
         <input type="hidden" name="post_id" value= php $post['post_id'] ?>>
