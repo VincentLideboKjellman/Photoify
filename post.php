@@ -32,6 +32,19 @@
 
       <?php endif; ?>
       <!--// END Edit Post Description  -->
+      <!--Delete Post  -->
+      <?php if ($_SESSION['user']['id'] === $post['user_id']): ?>
+      <div class="edit-description">
+        <form class="edit-description-form" action="app/posts/delete.php" method="post">
+          <input type="hidden" name="postId" value="<?php echo $post['post_id'];?>" >
+          <button type="submit" name="button">Remove Post</button>
+        </form>
+      </div>
+
+      <?php endif; ?>
+
+      <!--//End Delete Post  -->
+
 
 
       <div class="likes-container">
