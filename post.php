@@ -16,17 +16,32 @@
 <div class="feed-container">
   <?php foreach ($_SESSION['posts'] as $post): ?>
     <div class="posts">
+
       <img src="/app/posts/postUploads/<?php echo $post['user_id'].'/'.$post['image'] ?>" width="200px" height="200px" alt="">
       <p>Description: <?php echo $post['description'] ?></p>
-      <p>Likes:<?php echo $post['likes']; ?></p>
-      <form class="" action="/app/posts/likes.php" method="post">
-        <input type="hidden" name="like" value=<?php $post['likes'] ?>>
-        <button type="button" name="button">Like</button>
+
+
+      <div class="likes-container">
+
+					<form class="likes" method="post" >
+						<input type="hidden" name="id" value="<?= $post['post_id']; ?>">
+						<button class="" type="submit">Like</button>
+					</form>
+
+          <p class="number-likes" >Likes:<?php echo $post['likes']; ?></p>
+
+			</div>
+
+      <!-- <form class="" action="/app/posts/likes.php" method="post">
+        <input type="hidden" name="post_id" value= php $post['post_id'] ?>>
+        <button type="submit" name="button">Like</button>
       </form>
-      <form class="" action="/app/posts/likes.php" method="post">
-        <input type="hidden" name="dislike" value=<?php $post['likes']?>>
-        <button type="button" name="button">Dislike</button>
-      </form>
+
+      <form class="" action="/app/posts/dislikes.php" method="post">
+        <input type="hidden" name="post_id" value= php $post['post_id']?>>
+        <button type="submit" name="button">Dislike</button>
+      </form> -->
+
     </div>
   <?php endforeach; ?>
 </div>
