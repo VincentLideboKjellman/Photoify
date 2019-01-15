@@ -25,30 +25,25 @@
        $statement = $pdo->prepare(
           'SELECT * FROM likes WHERE post_id = :post_id AND user_id = :user_id');
            $statement->bindParam(':post_id', $post['post_id'], PDO::PARAM_INT);
-           $statement->bindParam(':user_id', $_SESSION['user']['user_id'], PDO::PARAM_INT);
+           $statement->bindParam(':user_id', $_SESSION['user']['id'], PDO::PARAM_INT);
            $statement->execute();
            $alreadyLiked = $statement->fetch(PDO::FETCH_ASSOC);
-   ?>
-           <!-- change button if the post is liked or not by the user -->
+           ?>
+      <!-- change button if the post is liked or not by the user -->
+      <p>Liked by: <?php echo $post['likes']; ?></p>
        <?php if($alreadyLiked):?>
-           <form class="like-post" action="app/likes/delete.php" method="post">
-               <button type="submit" name="like" class="like">
-                   <span style="color:red;">
-                       <i class="fas fa-heart fa-lg"></i>
-                   </span>
-               </button>
-                   <p>Liked by: <?php echo $post['like']; ?></p>
-                   <input type="hidden" value="<?php echo $post['post_id'];?>" name="post_id" id=post_id>
+           <form class="dislike-post" action="app/posts/dislikes.php" method="post">
+               <button type="submit" class="dislike">Dislike</button>
+                   <input type="hidden" value="<?php echo $post['post_id'];?>" name="post_id">
+                   <input type="hidden" value="<?php echo $post['likes'];?>" name="totalLikes">
            </form>
-   <?php else: ?>
-           <form class="like-post" action="app/likes/like.php" method="post">
-               <button type="submit" name="like" class="like">
-                   <i class="far fa-heart fa-lg"></i>
-               </button>
-                   <p>Liked by: <?php echo $post['like']; ?></p>
-                   <input type="hidden" value="<?php echo $post['post_id'];?>" name="post_id" id=post_id>
+         <?php else: ?>
+           <form class="like-post" action="app/posts/likes.php" method="post">
+               <button type="submit" class="like">Like</button>
+                   <input type="hidden" value="<?php echo $post['post_id'];?>" name="post_id">
+                   <input type="hidden" value="<?php echo $post['likes'];?>" name="totalLikes">
            </form>
-   <?php endif; ?>
+         <?php endif; ?>
       <!------------------ end Like Posts -->
 
       <!--Edit post Decription-->
@@ -78,25 +73,10 @@
 
       <!--//End Delete Post  -->
 
-
-
-
-
-      <!-- <form class="" action="/app/posts/likes.php" method="post">
-        <input type="hidden" name="post_id" value= php $post['post_id'] ?>>
-        <button type="submit" name="button">Like</button>
-      </form>
-
-      <form class="" action="/app/posts/dislikes.php" method="post">
-        <input type="hidden" name="post_id" value= php $post['post_id']?>>
-        <button type="submit" name="button">Dislike</button>
-      </form> -->
-
     </div>
   <?php endforeach; ?>
 </div>
 <!--// End feed  -->
-
 
 
 <?php require __DIR__.'/views/footer.php'; ?>
