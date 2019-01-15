@@ -20,11 +20,24 @@
       <img src="/app/posts/postUploads/<?php echo $post['user_id'].'/'.$post['image'] ?>" width="200px" height="200px" alt="">
       <p>Description: <?php echo $post['description'] ?></p>
 
+      <!--Edit post Decription-->
+      <?php if ($_SESSION['user']['id'] === $post['user_id']): ?>
+      <div class="edit-description">
+        <form class="edit-description-form" action="app/posts/update.php" method="post">
+          <input type="text" name="changeDescription">
+          <input type="hidden" name="postId" value="<?php echo $post['post_id'];?>" >
+          <button type="submit" name="button">Change Description</button>
+        </form>
+      </div>
+
+      <?php endif; ?>
+      <!--// END Edit Post Description  -->
+
 
       <div class="likes-container">
 
 					<form class="likes" method="post" >
-						<input type="hidden" name="id" value="<?= $post['post_id']; ?>">
+						<input type="hidden" name="id" value="<?php $post['post_id']; ?>">
 						<button class="" type="submit">Like</button>
 					</form>
 
