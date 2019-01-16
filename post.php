@@ -7,14 +7,24 @@
 <article class="text-center">
 
 
-<h1>New Post</h1>
 <form class="" action="/app/posts/store.php" method="post" enctype="multipart/form-data">
-  Post an image:<input type="file" name="image" value=""><br><br>
-  Set a Description:<input type="text" name="imageDescription" placeholder="Image Description" value=""><br><br>
-  <button class="btn btn-success" type="submit" name="button">Submit Post</button>
+	<div class="card mx-auto" style="width: 24rem;">
+		<ul class="list-group list-group-flush">
+			<div class="card-body">
+				<h5 class="card-title">Create new Post</h5>
+					<p class="card-text">Post an image:<input type="file" name="image" value=""></p>
+					</p>
+					</div>
+				<li class="list-group-item">Set a Description:<input type="text" name="imageDescription" placeholder="Image Description" value=""></li>
+		</ul>
+
+		<div class="card-body">
+			<button class="btn btn-success" type="submit" name="button">Submit Post</button>
+		</div>
+	</div>
 </form>
 
-<br>
+
 <div class="feed-container">
   <?php foreach ($_SESSION['posts'] as $post): ?>
     <div class="posts">
@@ -39,16 +49,17 @@
 							 $alreadyLiked = $statement->fetch(PDO::FETCH_ASSOC);
 							 ?>
 					<!-- change button if the post is liked or not by the user -->
-					<p>Liked by: <?php echo $post['likes']; ?></p>
+					<p><?php echo $post['likes'].' Likes'; ?></p>
+
 					 <?php if($alreadyLiked):?>
 							 <form class="dislike-post" action="app/posts/dislikes.php" method="post">
-									 <button type="submit" class="dislike">Dislike</button>
+									 <button class="" type="submit"> <i class="like-color like-heart fas fa-heart"></i></button>
 											 <input type="hidden" value="<?php echo $post['post_id'];?>" name="post_id">
 											 <input type="hidden" value="<?php echo $post['likes'];?>" name="totalLikes">
 							 </form>
 						 <?php else: ?>
 							 <form class="like-post" action="app/posts/likes.php" method="post">
-									 <button class="btn btn-succsess" type="submit" class="like">Like</button>
+									 <button class="" type="submit"><i class="dislike-color like-heart far fa-heart"></i></button>
 											 <input type="hidden" value="<?php echo $post['post_id'];?>" name="post_id">
 											 <input type="hidden" value="<?php echo $post['likes'];?>" name="totalLikes">
 							 </form>
@@ -98,16 +109,17 @@
 							 $alreadyLiked = $statement->fetch(PDO::FETCH_ASSOC);
 							 ?>
 					<!-- change button if the post is liked or not by the user -->
-					<p>Liked by: <?php echo $post['likes']; ?></p>
+					<p><?php echo $post['likes'].' Likes'; ?></p>
+
 					 <?php if($alreadyLiked):?>
 							 <form class="dislike-post" action="app/posts/dislikes.php" method="post">
-									 <button class="btn btn-success" type="submit">Dislike</button>
+									 <button class="" type="submit"> <i class="like-color like-heart fas fa-heart"></i></button>
 											 <input type="hidden" value="<?php echo $post['post_id'];?>" name="post_id">
 											 <input type="hidden" value="<?php echo $post['likes'];?>" name="totalLikes">
 							 </form>
 						 <?php else: ?>
 							 <form class="like-post" action="app/posts/likes.php" method="post">
-									 <button class="btn btn-success" type="submit" >Like</button>
+									 <button class="" type="submit"><i class="dislike-color like-heart far fa-heart"></i></button>
 											 <input type="hidden" value="<?php echo $post['post_id'];?>" name="post_id">
 											 <input type="hidden" value="<?php echo $post['likes'];?>" name="totalLikes">
 							 </form>
@@ -119,7 +131,7 @@
 						<form class="edit-description-form" action="app/posts/update.php" method="post">
 							<input type="text" name="changeDescription">
 							<input type="hidden" name="postId" value="<?php echo $post['post_id'];?>" >
-							<button class="btn btn-success" type="submit" name="button">Change Description</button>
+							<button class="edit-button btn btn-success" type="submit" name="button">Change Description</button>
 						</form>
 					</div>
 
@@ -130,7 +142,7 @@
 					<div class="delete-post">
 						<form class="delete-post-form" action="app/posts/delete.php" method="post">
 							<input type="hidden" name="postId" value="<?php echo $post['post_id'];?>" >
-							<button class="btn btn-success" type="submit" name="button">Remove Post</button>
+							<button class="delete-button btn btn-warning" type="submit" name="button">Remove Post</button>
 						</form>
 					</div>
 					<?php endif; ?>

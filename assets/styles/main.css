@@ -11,6 +11,32 @@
   display: none;
   }
 }
+body{
+  background-color: gray;
+  /* color: white; */
+}
+.like-heart{
+  font-size: 250%;
+}
+.like-color{
+  color:green;
+}
+.dislike-color{
+  color:gray;
+}
+
+.delete-button{
+  width:50%;
+  margin-top: 3%;
+}
+.edit-button{
+  width:50%;
+}
+
+.posts{
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
 
 .form-group{
   margin-left: 15%;
