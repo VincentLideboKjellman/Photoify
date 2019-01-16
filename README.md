@@ -20,8 +20,7 @@
 $ git clone https://github.com/VincentLideboKjellman/Photoify
 
 - Start MAMP/WAMP/LAMP or Similar
-
-# Start from the starter directory in the project
+- Start from the starter directory in the project
 
 ## Credits
 
