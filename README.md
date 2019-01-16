@@ -1,9 +1,9 @@
 # Photoify
 
-![alt text](https://github.com/VincentLideboKjellman/Photoify/tree/master/Screenshots/screen1.png)
+<!-- ![alt text](https://github.com/VincentLideboKjellman/Photoify/tree/master/Screenshots/screen1.png)
 ![alt text](relative/Photoify/tree/master/Screenshots/screen2.png)
 
-![Alt text](relative/path/to/img.jpg?raw=true "Title")
+![Alt text](relative/path/to/img.jpg?raw=true "Title") -->
 
 ## Key Features
 
