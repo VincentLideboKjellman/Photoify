@@ -1,8 +1,23 @@
 /* In this file you can add your custom styles. */
 
-
+.form-group{
+  margin-left: 15%;
+  margin-right:15%;
+}
 
 .navbar-nav{
   font-size: 150% ;
+}
+.navbar-brand{
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  font-size: 150%;
+  padding-left: 20%;
 
 }
+
+/* .navbar{
+  position: fixed;
+  top: 0;
+} */
