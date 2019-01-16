@@ -1,5 +1,9 @@
 # Photoify
 
+![alt text](https://raw.githubusercontent.com/VincentLideboKjellman/Photoify/Screenshots/screen1.png)
+![alt text](https://raw.githubusercontent.com/VincentLideboKjellman/Photoify/Screenshots/screen2.png)
+
+
 
 ## Key Features
 
