@@ -1,7 +1,7 @@
 # Photoify
 
-![alt text](https://raw.githubusercontent.com/VincentLideboKjellman/Photoify/Screenshots/screen1.png)
-![alt text](https://raw.githubusercontent.com/VincentLideboKjellman/Photoify/Screenshots/screen2.png)
+![alt text](https://github.com/VincentLideboKjellman/Photoify/tree/master/Screenshots/screen1.png)
+![alt text](https://github.com/VincentLideboKjellman/Photoify/tree/master/Screenshots/screen2.png)
 
 
 
