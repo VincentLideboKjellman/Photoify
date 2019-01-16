@@ -71,7 +71,7 @@
 						<form class="edit-description-form" action="app/posts/update.php" method="post">
 							<input type="text" name="changeDescription">
 							<input type="hidden" name="postId" value="<?php echo $post['post_id'];?>" >
-							<button type="submit" name="button">Change Description</button>
+							<button class="edit-button btn btn-success" type="submit" name="button">Change Description</button>
 						</form>
 					</div>
 
@@ -82,7 +82,7 @@
 					<div class="delete-post">
 						<form class="delete-post-form" action="app/posts/delete.php" method="post">
 							<input type="hidden" name="postId" value="<?php echo $post['post_id'];?>" >
-							<button type="submit" name="button">Remove Post</button>
+							<button class="delete-button btn btn-warning" type="submit" name="button">Remove Post</button>
 						</form>
 					</div>
 					<?php endif; ?>
