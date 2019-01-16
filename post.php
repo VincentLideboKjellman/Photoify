@@ -20,6 +20,9 @@
       <img src="/app/posts/postUploads/<?php echo $post['user_id'].'/'.$post['image'] ?>" width="200px" height="200px" alt="">
       <p>Description: <?php echo $post['description'] ?></p>
 
+
+
+
       <!------------------ Like Posts -->
       <?php
        $statement = $pdo->prepare(
@@ -47,7 +50,7 @@
       <!------------------ end Like Posts -->
 
       <!--Edit post Decription-->
-      <?php if ($_SESSION['user']['id'] === $post['user_id']): ?>
+      <?php if ((int)$_SESSION['user']['id'] === (int)$post['user_id']): ?>
       <div class="edit-description">
         <form class="edit-description-form" action="app/posts/update.php" method="post">
           <input type="text" name="changeDescription">
@@ -59,7 +62,7 @@
       <?php endif; ?>
       <!--// END Edit Post Description  -->
       <!--Delete Post  -->
-      <?php if ($_SESSION['user']['id'] === $post['user_id']): ?>
+      <?php if ((int)$_SESSION['user']['id'] === (int)$post['user_id']): ?>
       <div class="delete-post">
         <form class="delete-post-form" action="app/posts/delete.php" method="post">
           <input type="hidden" name="postId" value="<?php echo $post['post_id'];?>" >
