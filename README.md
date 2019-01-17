@@ -20,6 +20,12 @@
 
 ## How To Use
 
+##Testers
+
+* Isac Larsson (PC)
+
+* Gustav Svendsen (MAC)
+
 # Clone this repository
 $ git clone https://github.com/VincentLideboKjellman/Photoify
 
