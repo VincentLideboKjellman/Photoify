@@ -29,9 +29,6 @@
   <?php foreach ($_SESSION['posts'] as $post): ?>
     <div class="posts">
 
-      <!-- <img src="/app/posts/postUploads/<//?php echo $post['user_id'].'/'.$post['image'] ?>" width="200px" height="200px" alt=""> -->
-      <!-- <p>Description: <//?php echo $post['description'] ?></p> -->
-
 			<!----------------------------------- Desktop Posts -->
 			<div id="post-for-desktop" class="card mx-auto" style="width:24rem;">
 				<img class="card-img" <img src="/app/posts/postUploads/<?php echo $post['user_id'].'/'.$post['image'] ?>" alt="">
