@@ -42,13 +42,3 @@ if (isset($_FILES['image'])) {
 
 }
 redirect('../posts/loadPosts.php');
-
-// if ($image['size'] >= 4194304) {
-//   $errors[] = $image['name'].'Is too big, please choose an image that\'s smaller than 4mb';
-// }
-//
-// if (count($errors)>0) {
-//   $_SESSION['errors'] = $errors;
-//   print_r($errors);
-//   exit;
-// }
