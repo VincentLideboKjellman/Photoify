@@ -1,9 +1,9 @@
 <?php require __DIR__.'/views/header.php'; ?>
 <?php
-	if (!isset($_SESSION['user'])) {
-		redirect('login.php');
-	}
-	?>
+    if (!isset($_SESSION['user'])) {
+        redirect('login.php');
+    }
+    ?>
 <article class="text-center">
 
 
@@ -38,17 +38,18 @@
 				<div class="card-body">
 					<!------------------ Like Posts -->
 					<?php
-					 $statement = $pdo->prepare(
-							'SELECT * FROM likes WHERE post_id = :post_id AND user_id = :user_id');
-							 $statement->bindParam(':post_id', $post['post_id'], PDO::PARAM_INT);
-							 $statement->bindParam(':user_id', $_SESSION['user']['id'], PDO::PARAM_INT);
-							 $statement->execute();
-							 $alreadyLiked = $statement->fetch(PDO::FETCH_ASSOC);
-							 ?>
+                     $statement = $pdo->prepare(
+                            'SELECT * FROM likes WHERE post_id = :post_id AND user_id = :user_id'
+    );
+                             $statement->bindParam(':post_id', $post['post_id'], PDO::PARAM_INT);
+                             $statement->bindParam(':user_id', $_SESSION['user']['id'], PDO::PARAM_INT);
+                             $statement->execute();
+                             $alreadyLiked = $statement->fetch(PDO::FETCH_ASSOC);
+                             ?>
 					<!-- change button if the post is liked or not by the user -->
 					<p><?php echo $post['likes'].' Likes'; ?></p>
 
-					 <?php if($alreadyLiked):?>
+					 <?php if ($alreadyLiked):?>
 							 <form class="dislike-post" action="app/posts/dislikes.php" method="post">
 									 <button class="" type="submit"> <i class="like-color like-heart fas fa-heart"></i></button>
 											 <input type="hidden" value="<?php echo $post['post_id'];?>" name="post_id">
@@ -98,17 +99,18 @@
 				<div class="card-body">
 					<!------------------ Like Posts -->
 					<?php
-					 $statement = $pdo->prepare(
-							'SELECT * FROM likes WHERE post_id = :post_id AND user_id = :user_id');
-							 $statement->bindParam(':post_id', $post['post_id'], PDO::PARAM_INT);
-							 $statement->bindParam(':user_id', $_SESSION['user']['id'], PDO::PARAM_INT);
-							 $statement->execute();
-							 $alreadyLiked = $statement->fetch(PDO::FETCH_ASSOC);
-							 ?>
+                     $statement = $pdo->prepare(
+                            'SELECT * FROM likes WHERE post_id = :post_id AND user_id = :user_id'
+                             );
+                             $statement->bindParam(':post_id', $post['post_id'], PDO::PARAM_INT);
+                             $statement->bindParam(':user_id', $_SESSION['user']['id'], PDO::PARAM_INT);
+                             $statement->execute();
+                             $alreadyLiked = $statement->fetch(PDO::FETCH_ASSOC);
+                             ?>
 					<!-- change button if the post is liked or not by the user -->
 					<p><?php echo $post['likes'].' Likes'; ?></p>
 
-					 <?php if($alreadyLiked):?>
+					 <?php if ($alreadyLiked):?>
 							 <form class="dislike-post" action="app/posts/dislikes.php" method="post">
 									 <button class="" type="submit"> <i class="like-color like-heart fas fa-heart"></i></button>
 											 <input type="hidden" value="<?php echo $post['post_id'];?>" name="post_id">

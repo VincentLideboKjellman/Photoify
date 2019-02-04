@@ -3,8 +3,8 @@
 <article>
     <h1><?php echo $config['title']; ?></h1>
     <p>This is the home page.</p>
-    <?php if (!isset($_SESSION['user'])){
-	    redirect('/login.php');
+    <?php if (!isset($_SESSION['user'])) {
+    redirect('/login.php');
 };     ?>
     <?php if (isset($_SESSION['user'])): ?>
         <p>Welcome, <?php echo $_SESSION['user']['name']; ?>!</p>

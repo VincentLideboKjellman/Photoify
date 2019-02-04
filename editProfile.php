@@ -1,16 +1,20 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
-<?php if(!isset($_SESSION['user'])){ redirect("/"); } else { $user = $_SESSION['user'];}?>
+<?php if (!isset($_SESSION['user'])) {
+    redirect("/");
+} else {
+    $user = $_SESSION['user'];
+}?>
 <article class="text-center">
 
 
 
 <div class="card mx-auto" style="width: 24rem;">
-  <img class="card-img-top" src="/app/users/uploads/profile_images/<?php if($_SESSION['user']['profile_image'] === 'defaultvalue.jpg'){
+  <img class="card-img-top" src="/app/users/uploads/profile_images/<?php if ($_SESSION['user']['profile_image'] === 'defaultvalue.jpg') {
     echo 'defaultvalue.jpg';
-  }else {
+} else {
     echo $_SESSION['user']['id'].'/'.$_SESSION['user']['profile_image'];
-  } ?>"  alt="A profile picture">
+} ?>"  alt="A profile picture">
 </div>
 <h3>Change profile picture</h3>
 <form class="edit-form" action="app/users/profileImage.php" method="post" enctype="multipart/form-data">
