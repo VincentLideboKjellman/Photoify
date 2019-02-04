@@ -12,6 +12,7 @@ if (isset($_POST['postId'])) {
         die(var_dump($pdo->errorInfo()));
     }
 
+
     $deleteStatement->bindParam(':post_id', $postId, PDO::PARAM_INT);
 
     $deleteStatement->execute();
