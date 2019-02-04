@@ -1,5 +1,7 @@
 # Photoify
 
+![](https://styleci.io/repos/7548986/shield)
+
 <!-- ![alt text](https://github.com/VincentLideboKjellman/Photoify/tree/master/Screenshots/screen1.png)
 ![alt text](relative/Photoify/tree/master/Screenshots/screen2.png)
 
@@ -48,5 +50,4 @@ MIT
 
 ---
 
-https://styleci.io/repos/7548986/shield
 > GitHub [@VincentLideboKjellman](https://github.com/VincentLideboKjellman) &nbsp;&middot;&nbsp;
