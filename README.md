@@ -48,4 +48,5 @@ MIT
 
 ---
 
+https://styleci.io/repos/7548986/shield
 > GitHub [@VincentLideboKjellman](https://github.com/VincentLideboKjellman) &nbsp;&middot;&nbsp;
